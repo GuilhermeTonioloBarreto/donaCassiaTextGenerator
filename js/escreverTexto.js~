@@ -1,0 +1,3 @@
+function escreverTexto() {
+	alert('deu certo');
+}

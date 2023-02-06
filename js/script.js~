@@ -1,0 +1,110 @@
+// adicionar tamanhos de marmita no html
+const tamanhoArray = [
+	"Pequeno", 
+	"Médio",
+	"Grande"
+];
+let divTamanho = document.getElementById("divTamanho");
+adicionarRadioButton(tamanhoArray, divTamanho, "tamanho");
+
+
+
+
+// adicionar misturas no html
+const misturaArray = [
+	"Feijoada",
+	"Bife Grelhado",
+	"Lasanha",
+	"Frango Assado",
+	"Costelinha Suina Assada",
+	"File Frango Grelhado",
+	"Linguiça Frita",
+	"Omelete Presunto Queijo",
+	"Omelete Queijo",
+	"Ovo Frito"
+];
+let divMistura = document.getElementById("divMistura");
+adicionarCheckBox(misturaArray, divMistura);
+
+
+
+
+const acompanhamentoArray = [
+	"Farofa",
+	"Couve Refogado",
+	"Torresmo",
+	"Batata Frita"
+];
+let divAcompanhamento = document.getElementById("divAcompanhamento");
+adicionarCheckBox(acompanhamentoArray, divAcompanhamento);
+
+
+
+/* funcao que cria sequencia de radio buttons
+	array = é um array com a sequencia a ser exibida nos radio buttons
+	div = é a div os radio buttons serão adicionados
+	nome = é o nome que a sequência de radio buttons terão
+*/
+function adicionarRadioButton(array, div, nome){
+	let form = document.createElement("form");
+		
+	for(element of array){
+		let divRadio = document.createElement("div");
+		divRadio.classList.add("form-check");
+		
+		let input = document.createElement("input");
+		input.classList.add("form-check-input");
+		input.type = "radio";
+		input.id = element;
+		input.name = nome;
+		input.value = element;
+		
+		let label = document.createElement("label");
+		label.classList.add("form-check-label");
+		label.for = element;
+		label.innerHTML = element;
+		
+		divRadio.appendChild(input);
+		divRadio.appendChild(label);
+		
+		form.appendChild(divRadio);
+	}
+	
+	div.appendChild(form);	
+}
+
+
+
+
+/* funcao que cria sequencia de checkbox
+	array = é um array com a sequencia a ser exibida nos checkbox
+	div = é a div os checkbox serão adicionados
+	numMaximo = numero maximo de itens que pode ser tickado
+*/
+function adicionarCheckBox(array, div){
+	let form = document.createElement("form");
+		
+	for(element of array){
+		let divCheckBox = document.createElement("div");
+		divCheckBox.classList.add("form-check");
+		
+		let input = document.createElement("input");
+		input.classList.add("form-check-input");
+		input.type = "checkbox";
+		input.id = element;
+		input.name = element;
+		input.value = element;
+		
+		let label = document.createElement("label");
+		label.classList.add("form-check-label");
+		label.for = element;
+		label.innerHTML = element;
+		
+		divCheckBox.appendChild(input);
+		divCheckBox.appendChild(label);
+		
+		form.appendChild(divCheckBox);
+	}
+	
+	div.appendChild(form);
+}
